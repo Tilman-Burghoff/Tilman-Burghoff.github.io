@@ -22,8 +22,9 @@
                 padding-bottom: 20px;
             }
             .footer {
-                padding-left: 10%;
-                padding-right: 10%;
+                margin: auto;
+                max-width: 1000px;
+                padding: 3em;
             }
             .face {
                 border-radius: 50%;
@@ -32,16 +33,10 @@
             .intro {
                 margin-bottom: 100px;
             }
-
-            @media (min-width: 768px) {
-                .intro {
-                    width: 80%;
-                    text-align: justify;
-                }
-            }
             .all_content {
-                margin-left: 10%;
-                margin-right: 10%;
+                margin: auto;
+                max-width: 1000px;
+                padding: 3em;
             }
             .content {
                 margin-bottom: 100px;
@@ -51,22 +46,30 @@
             }
             .paper_text {
                 width: 70%;
-                padding-left: 10px;
             }
             .paper_image {
-                width:10%;
-                margin-left: 2%;
+                width:20%;
+                    padding-left: 2%;
             }
             .paper {
                 display: flex;
-                padding-left: 50px;
-                padding-right: 50px;
+                padding-left: 25px;
                 padding-top: 10px;
                 padding-bottom: 10px;
                 
             }
 
+            @media (min-width: 768px) {   
+                .intro {
+                    text-align: justify;
+                }
+            }
+
+
             @media (max-width: 767px) {
+                .all_content {
+                    padding: 2em;
+                }
                 .paper {
                     display: block;
                     padding-left: 0px;
@@ -85,6 +88,9 @@
                     display: block;
                     margin-left: auto;
                     margin-right: auto;
+                }
+                .footer {
+                    padding: 1em;
                 }
             }
         </style>
