@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tilman Burghoff</title>
+        <link rel="icon" href="./icon.png" type="image/png">
+        <style>
+            * {
+                font-family: 'Consolas', 'Courier New', monospace;
+            }
+            p {
+                font-size: large;
+            }
+            body {
+                margin: 0;
+                background-color: floralwhite;
+            }
+            .header {
+                text-align: center;
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+            .footer {
+                padding-left: 10%;
+                padding-right: 10%;
+            }
+            .face {
+                border-radius: 50%;
+                width: 150px;
+            }
+            .intro {
+                margin-bottom: 100px;
+            }
+            .all_content {
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+            .content {
+                margin-bottom: 100px;
+            }
+            .paper img {
+                width: 200px;
+            }
+            .paper_text {
+                width: 70%;
+                padding-left: 10px;
+            }
+            .paper_image {
+                width:10%;
+                text-align: center;
+            }
+            .paper {
+                display: flex;
+                padding-left: 50px;
+                padding-right: 50px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                
+            }
+
+            @media (max-width: 767px) {
+                .paper {
+                    display: block;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    justify-content: center;
+                }
+                .paper_text {
+                    width: 100%;
+                }
+                .paper_image {
+                    height: 100%;
+                    text-align: center;
+                    margin-top: 10px;
+                }
+                .paper_image img {
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <img class="face" src="./imgs/me.jpg"/>
+            <h1>Tilman Burghoff</h1>
+        </div>
+        <div class="all_content">
+            <div class="intro">
+                <p>
+                    Hello! I'm Tilman, a Master's student in Computer Science at the 
+                    <a href="https://www.tu.berlin/en/">Technische Universität Berlin</a>. 
+                    I'm interested in robotics, machine learning, optimization and discrete mathematics. 
+                    I am currently working as a student research assistant at the 
+                    <a href="https://argmin.lis.tu-berlin.de">Learning and Intelligent Systems Lab</a> at TU Berlin.  
+                    I finished my bachelor of mathematics in 2023. I wrote my thesis on topology titled "Filtrierung und Homologie von
+                    Simplizialkomplexen" under the supervision of Prof. Dr. Michael Joswig. It was recognized with an <a href="https://math.berlin/preise/bachelorpreise-bmg.html#BMGTag2023">award</a> for outstanding bachelortheses by the Berliner Mathematische Gesellschaft.
+                </p>
+            </div>
+            <h2>Publications</h2>
+            <div class="content">
+                <div class="paper">
+                    <div class="paper_text">
+                        <h3>Stability-Guided Exploration for Diverse Motion Generation</h3>
+                        <p>Eckart Cobo-Briesewitz, <strong>Tilman Burghoff</strong>, Denis Shcherba, Armand Jordana and Marc Toussaint </p>
+                        <p>[<a href="https://arxiv.org/pdf/2603.06773">Paper</a>] [<a href="https://github.com/Tupryk/EXPLORE">Code</a>] [<a href="https://www.youtube.com/watch?v=mLnu76iOSlI">Video</a>]</p>
+                        <p>Under Review</p>
+                    </div>
+                    <div class="paper_image">
+                        <img src="./imgs/path-outside-manifold_v4.8.svg"/>
+                    </div>
+                </div>
+            </div>
+            <h2>Workshop Papers</h2>
+            <div class="content">
+                <div class="paper">
+                    <div class="paper_text">
+                        <h3>Data-Free Training of Diverse Neural Samplers for Constrained Sets</h3>
+                        <p><strong>Tilman Burghoff</strong>, Cornelius V Braun, and Marc Toussaint</p>
+                        <p>[<a href="https://argmin.lis.tu-berlin.de/papers/26-burghoff-GRC.pdf">Paper</a>]</p>
+                        <p>Presented at 2nd German Robotics Conference (GRC), Extended Abstract</p>
+                    </div>
+                    <div class="paper_image">
+                        <img src="./imgs/constr-samp.png"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>Email: t.burghoff(at)tu-berlin(dot)de</p>
+            <p>[<a href="https://github.com/Tilman-Burghoff">GitHub</a>] [<a href="https://scholar.google.com/citations?user=VkziAPgAAAAJ">Google Scholar</a>] [<a href="https://linkedin.com/in/tilman-burghoff">LinkedIn</a>]</p>
+
+            <p style="font-size: small;">Template by <a href="https://tupryk.github.io/">Eckart Cobo-Briesewitz</a></p>
+        </div>
+    </body>
+</html>
