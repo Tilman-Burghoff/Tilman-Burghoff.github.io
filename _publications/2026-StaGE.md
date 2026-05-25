@@ -9,7 +9,7 @@ authors:
     - Armand Jordana
     - Marc Toussaint
 preview_image: /images/path-outside-manifold_v4.8.svg
-excerpt: 'A method for finding diverse long-horizon manipulations through black-box simulation.'
+excerpt: 'We generate diverse long-horizon manipulations by leveraging black-box simulation.'
 date: 2026-03-06
 venue: 'Accepted at ICRA Xplore Workshop 2026 (Oral)'
 links: '[arXiv](https://arxiv.org/abs/2603.06773) | [Code](https://github.com/Tupryk/EXPLORE) | [Video](https://www.youtube.com/watch?v=mLnu76iOSlI) | [Bibtex](/files/cobobriesewitz2026stabilityguided.bib)'
