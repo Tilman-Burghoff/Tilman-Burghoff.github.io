@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Tilman Burghoff"
+title: "Hi, Im Tilman"
 author_profile: true
 redirect_from: 
   - /about/
@@ -8,11 +8,12 @@ redirect_from:
 ---
 
 
-Hello! I'm Tilman, a Master's student in Computer Science at the 
+Nice to meet you! I am a Master's student in Computer Science at the 
 [Technische Universität Berlin](https://www.tu.berlin/en/). 
 I'm interested in robotics, machine learning, optimization and discrete mathematics. 
 I am currently working as a student research assistant at the 
-[Learning and Intelligent Systems Lab](https://argmin.lis.tu-berlin.de) at TU Berlin.  
+[Learning and Intelligent Systems Lab](https://argmin.lis.tu-berlin.de) at TU Berlin. 
+
 I finished my bachelor of mathematics in 2023. I wrote my thesis on topology titled "Filtrierung und Homologie von
 Simplizialkomplexen" under the supervision of Prof. Dr. Michael Joswig. It was recognized with an [award](https://math.berlin/preise/bachelorpreise-bmg.html#BMGTag2023) for outstanding bachelortheses by the Berliner Mathematische Gesellschaft.
 
