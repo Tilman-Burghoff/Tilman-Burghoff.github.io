@@ -10,7 +10,7 @@ authors:
     - Marc Toussaint
 preview_image: /images/path-outside-manifold_v4.8.svg
 excerpt: 'A method for finding diverse long-horizon manipulations through black-box simulation.'
-date: 2026-01-01
+date: 2026-03-06
 venue: 'Accepted at ICRA Xplore Workshop 2026 (Oral)'
 links: '[arXiv](https://arxiv.org/abs/2603.06773) | [Code](https://github.com/Tupryk/EXPLORE) | [Video](https://www.youtube.com/watch?v=mLnu76iOSlI) | [Bibtex](/files/cobobriesewitz2026stabilityguided.bib)'
 # citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'

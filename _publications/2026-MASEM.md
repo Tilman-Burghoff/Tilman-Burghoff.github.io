@@ -8,7 +8,7 @@ authors:
     - Marc Toussaint
 preview_image: /images/masem_grid_mp_htcol.svg
 excerpt: 'Sampling points from disconnected Manifolds by using a entropy-maximizing resampling strategy.'
-date: 2026-01-02
+date: 2026-05-12
 venue: 'Under Review'
 links: '[arXiv](https://arxiv.org/abs/2605.12338) | [Bibtex](/files/braun2026manifold.bib)'
 # citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
