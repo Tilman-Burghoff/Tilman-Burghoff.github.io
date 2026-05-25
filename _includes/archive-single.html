@@ -64,8 +64,9 @@
     <p class="archive__item-excerpt" itemprop="description"><p>{{ post.excerpt | markdownify | remove: '<p>' | remove: '</p>' }}<strong><a href="{{ base_path }}{{ post.url }}" rel="permalink"> Read more</a></strong></p></p>
     {% endif %}
     
-    {% elsif post.collection == 'publications' %}
+    {% if post.collection == 'publications' %}
           <p style="font-size: smaller"><i>{{ post.venue }}</i> </p>
+    {% endif %}
     {% if post.links %}
       {% capture base_prefix %}]({{ base_path }}/{% endcapture %}
       {% assign links = post.links | replace: "](/", base_prefix %}
