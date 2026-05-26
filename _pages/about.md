@@ -1,6 +1,7 @@
 ---
 permalink: /
-title: "Hi, Im Tilman"
+title: "Tilman Burghoff"
+content_title: "Hi, Im Tilman"
 author_profile: true
 redirect_from: 
   - /about/

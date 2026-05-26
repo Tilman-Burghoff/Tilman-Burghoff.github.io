@@ -6,7 +6,7 @@ tags:
   - paper
   - MASEM
 ---
-This is meant as an introduction to the paper [“Manifold Sampling via Entropy Maximization”](https://arxiv.org/abs/2605.12338) by Cornelius V. Braun, me, and Marc Toussaint \[1\], where we introduce a framework we call MASEM. It will be very informal; I recommend reading the paper (perhaps armed with the intuition gained here) for a rigorous treatment.
+This is meant as an introduction to the paper “Manifold Sampling via Entropy Maximization” by Cornelius V. Braun, me, and Marc Toussaint \[1\], where we introduce a framework called MASEM. It will be very informal; I recommend [reading the paper](https://arxiv.org/pdf/2605.12338) (perhaps armed with the intuition gained here) for a rigorous treatment.
 
 ## Sampling under Constraints
 
