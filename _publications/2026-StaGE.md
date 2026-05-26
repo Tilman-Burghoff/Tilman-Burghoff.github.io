@@ -8,7 +8,7 @@ authors:
     - Denis Shcherba
     - Armand Jordana
     - Marc Toussaint
-preview_image: /images/path-outside-manifold_v4.8.svg
+preview_image: /images/stage-vis-abstract.svg
 excerpt: 'We generate diverse long-horizon manipulations by leveraging black-box simulation.'
 date: 2026-03-06
 venue: 'Accepted at ICRA Xplore Workshop 2026 (Oral)'

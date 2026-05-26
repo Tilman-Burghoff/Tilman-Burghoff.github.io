@@ -1,0 +1,510 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Introduction to Manifold Sampling via Entropy Maximization - Tilman Burghoff</title>
+
+
+
+<meta name="description" content="This is meant as an introduction to the paper “Manifold Sampling via Entropy Maximization” by Cornelius V. Braun, me, and Marc Toussaint [1], where we introduce a framework we call MASEM. It will be very informal; I recommend reading the paper (perhaps armed with the intuition gained here) for a rigorous treatment.">
+
+
+
+
+
+  <meta property="article:published_time" content="2026-05-26T00:00:00+00:00">
+
+
+
+  <link rel="canonical" href="http://localhost:4000/posts/2026/05/masem-intro/">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Tilman Burghoff",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+<!-- Open Graph protocol data (https://ogp.me/), used by social media -->
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Tilman Burghoff"> 
+<meta property="og:title" content="Introduction to Manifold Sampling via Entropy Maximization">
+
+  <meta property="og:type" content="article">
+
+
+  <meta property="og:description" name="description" content="This is meant as an introduction to the paper “Manifold Sampling via Entropy Maximization” by Cornelius V. Braun, me, and Marc Toussaint [1], where we introduce a framework we call MASEM. It will be very informal; I recommend reading the paper (perhaps armed with the intuition gained here) for a rigorous treatment.">
+
+
+  <meta property="og:url" content="http://localhost:4000/posts/2026/05/masem-intro/">
+
+
+
+
+
+<!-- end Open Graph protocol -->
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Tilman Burghoff Feed">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+    
+
+<!-- start custom head snippets -->
+
+<!-- Support for Academicons -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/academicons.css"/>
+
+<!-- favicon from https://commons.wikimedia.org/wiki/File:OOjs_UI_icon_academic-progressive.svg -->
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/images/apple-touch-icon-180x180.png"/>
+<link rel="icon" type="image/svg+xml" href="http://localhost:4000/images/favicon.svg"/>
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-32x32.png" sizes="32x32"/>
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-192x192.png" sizes="192x192"/>
+<link rel="manifest" href="http://localhost:4000/images/manifest.json"/>
+<link rel="icon" href="/images/favicon.ico"/>
+<meta name="theme-color" content="#ffffff"/>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><span class="navicon"></span></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg persist ">
+            <a href="http://localhost:4000/">Tilman Burghoff</a>
+          </li>
+          
+            
+            <li class="masthead__menu-item ">
+              <a href="http://localhost:4000/publications/">Publications</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item ">
+              <a href="http://localhost:4000/blog/">Blog</a>
+            </li>
+          
+          <li id="theme-toggle" class="masthead__menu-item persist tail">
+            <a role="button" aria-labelledby="theme-icon"><i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i></a>
+          </li>
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="http://localhost:4000/images/me.jpg" class="author__avatar" alt="Tilman Burghoff"  fetchpriority="high" />
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Tilman Burghoff</h3>
+    
+    <p class="author__bio">Student Researcher at Learning and Intelligent Systems Lab at TU Berlin. I am working in the intersection of Robotics, ML and Non-Linear Programming.</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      <!-- Font Awesome icons / Biographic information  -->
+      
+        <li class="author__desktop"><i class="fas fa-fw fa-location-dot icon-pad-right" aria-hidden="true"></i>Berlin, Germany</li>
+      
+      
+        <li class="author__desktop"><i class="fas fa-fw fa-building-columns icon-pad-right" aria-hidden="true"></i>Technische Universität Berlin</li>
+      
+      
+      
+        <li><a href="mailto:t.burghoff@tu-berlin.de"><i class="fas fa-fw fa-envelope icon-pad-right" aria-hidden="true"></i>Email</a></li>
+      
+
+      <!-- Font Awesome and Academicons icons / Academic websites -->
+      
+            
+      
+        <li><a href="https://scholar.google.de/citations?user=VkziAPgAAAAJ"><i class="ai ai-google-scholar ai-fw icon-pad-right"></i>Google Scholar</a></li>
+      
+            
+      
+      
+        <li><a href="https://orcid.org/0009-0008-9880-9671""><i class="ai ai-orcid ai-fw icon-pad-right"></i>ORCID</a></li>
+      
+                              
+      
+      
+      
+      
+      
+
+      <!-- Font Awesome icons / Repositories and software development -->
+      
+            
+            
+      
+        <li><a href="https://github.com/Tilman-Burghoff"><i class="fab fa-fw fa-github icon-pad-right" aria-hidden="true"></i>GitHub</a></li>
+      
+            
+            
+
+      <!-- Font Awesome icons / Social media -->
+              
+      
+      
+            
+      
+                  
+                  
+      
+            
+            
+      
+        <li><a href="https://www.linkedin.com/in/tilman-burghoff"><i class="fab fa-fw fa-linkedin icon-pad-right" aria-hidden="true"></i>LinkedIn</a></li>
+            
+      
+            
+                  
+            
+      
+            
+            
+      
+              
+      
+                      
+      
+      
+            
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Introduction to Manifold Sampling via Entropy Maximization">
+    <meta itemprop="description" content="This is meant as an introduction to the paper “Manifold Sampling via Entropy Maximization” by Cornelius V. Braun, me, and Marc Toussaint [1], where we introduce a framework we call MASEM. It will be very informal; I recommend reading the paper (perhaps armed with the intuition gained here) for a rigorous treatment.">
+    <meta itemprop="datePublished" content="May 26, 2026">
+    
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Introduction to Manifold Sampling via Entropy Maximization
+</h1>
+          
+          
+            <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> 
+
+
+  
+	  5 minute read
+	
+</p>
+          
+        
+        
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2026-05-26T00:00:00+00:00">May 26, 2026</time></p>
+            
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>This is meant as an introduction to the paper <a href="https://arxiv.org/abs/2605.12338">“Manifold Sampling via Entropy Maximization”</a> by Cornelius V. Braun, me, and Marc Toussaint [1], where we introduce a framework we call MASEM. It will be very informal; I recommend reading the paper (perhaps armed with the intuition gained here) for a rigorous treatment.</p>
+
+<h2 id="sampling-under-constraints">Sampling under Constraints</h2>
+
+<p>In robotics, we often deal with constraints. For example, our robot shouldn’t collide with obstacles and it should respect it’s joint limits. We express this as a mathematical function like distance(robot, obstacle) ≥ safe_distance. These constraint-functions form a so-called manifold. An example of a manifold is a piece of paper in three-dimensional space. No matter how you bend it, it always stays two-dimensional. We now want to pick random points from this manifold (in robotics this gives us redundancy: If one path is blocked, we know other ways to get around the obstacles). This, turns out, is surprisingly hard.</p>
+
+<p>Imagine you throw darts at a wall. Even if you throw completely at random, some of them will hit your dartboard just by pure luck. If however, I replace your two-dimensional dartboard with a one-dimensional line, you would need an incredible aim to have any chance of hitting it. Mathematically speaking, the chance of hitting this line with random throws is 0. This provides us with intuition about sampling (ie selecting random points) from a manifold. If the manifold dimension (the one-dimensional line) is smaller than the dimension of the space it lives in (the two-dimensional wall), hitting it randomly is impossible. We need a more sophisticated method: First, we select random points in the ambient space and then move them onto their closest point on the manifold. Since they might not be random after this projection step, we shuffle them around a bit on the manifold (called “mixing”). Mixing works by walking along our manifold randomly until we don’t know where the points initially came from. We call this a constrained sampler.</p>
+
+<h2 id="sampling-disconnected-components">Sampling Disconnected Components</h2>
+
+<p>This works well if we have only one connected component (one piece of paper). However, if we have multiple disconnected components (papers scattered across the room), this mixing process struggles with jumping between them. That means if we are unlucky and one component gets a lot more samples in the projection step, mixing is not going to fix that imbalance. The image below shows this problem. The smaller circle started with more samples, and the constrained sampler (NHR [2]) is not able to move the points towards the bigger one.</p>
+
+<p><img src="/images/masem-2d_rows.svg" alt="This image shows three plots. Each plot displays the samples generated by a method. The first one shows the samples of NHR, the second one of MASEM-NHR (our method) and the third one the ground truth. The samples are on two disk. In the NHR plot, it is clearly visible that a large part of the samples are in the smaller disk, way more then in the ground truth distribution. MASEM-NHR and the ground truth look very similar." /></p>
+
+<p>This is where MASEM, our method, comes in. We combine a local sampler as described above with a resampling step. The local sampler mixes points within components, while the resampling step takes care of global allocation. It takes points from crowded components and moves them towards those with little samples. In essence, MASEM helps the particles spread out fairly across all components of the constraint set.</p>
+
+<p>Interestingly, we only need local information to do that. Each point estimates its distance to its closest neighbors. If this distance is small, it means the neighborhood of this point is crowded and it likely belongs to an oversampled component. Conversely, if the distance is large, the point likely lies in an undersampled component. By treating these points with large neighbor distances as more important, we balance points between different components.</p>
+
+<p>In our experiments we see that this method works well, especially if our manifold has disconnected components. It only introduces a small runtime overhead and greatly improves the quality of our samples. We also test it on robotics-related problems, where we see that it helps with finding more diverse paths around obstacles. The graphic shows the paths found by two constrained samplers (OLLA [3] and NHR [2]), first as-is without MASEM, and then after we modify them with the MASEM-resampling step.</p>
+
+<p><img src="/images/masem-motion_planning_rand_2d_samples.svg" alt="Graphic showing constrained samplers without and with MASEM. We see blue paths crossing from left to right, while avoiding circular obstacles with different radii. First we see NHR without MASEM, and then with MASEM added. The difference is not gigantic, but it is clear that MASEM-NHR finds more paths, especially some more complicated ones (which go trough narrower gaps between obstacles). After that we see OLLA. Here, the difference between not using and using MASEM is striking. OLLA basically finds only paths going trough the center and ignores the outer paths. MASEM-OLLA keeps these paths trough the center, but is able to cover the whole space." /></p>
+
+<h2 id="to-be-slightly-more-rigorous">To be slightly more rigorous</h2>
+<p>A feasible set defined by constraints is not automatically a manifold. You need additional conditions, for example LICQ and smooth constraints. The resulting manifold is often called Riemannian manifold with corners, as it is locally diffeomorph to a euclidean half-space.
+The constrained sampler I describe resembles Non-linear Hit and Run [2]. While it can somewhat mix across disconnected components (given a large enough step size and enough time), it struggles if they are far apart or have high curvature. Resampling is done with weights proportional to the k-nearest neighbour distance with some temperature tau which should lie between 0 and the intrinsic dimension of the manifold.</p>
+
+<h2 id="sources">Sources</h2>
+<p>[1] C. V. Braun, T. Burghoff and M. Toussaint, “Manifold Sampling via Entropy Maximization,” arXiv preprint <a href="https://arxiv.org/abs/2605.12338">arXiv:2605.12338</a>, 2026.</p>
+
+<p>[2] M. Toussaint, C. V. Braun, and J. Ortiz-Haro, “NLP Sampling: Combining MCMC and NLP Methods for Diverse Constrained Sampling,” arXiv preprint <a href="https://arxiv.org/abs/2407.03035">arXiv:2407.03035</a>, 2024.</p>
+
+<p>[3] K. Jeon, M. Muehlebach, and M. Tao, “Fast Non-Log-Concave Sampling under Nonconvex Equality and Inequality Constraints with Landing,” in The thirty-ninth annual conference on neural information processing systems, 2026. <a href="https://openreview.net/forum?id=e46NRNunFp">Online</a></p>
+
+
+        
+
+        
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/#masem" class="page__taxonomy-item" rel="tag">MASEM</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#paper" class="page__taxonomy-item" rel="tag">paper</a>
+    
+    </span>
+  </p>
+
+
+
+
+      </footer>
+
+      <!-- 
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://bsky.app/intent/compose?text=http://localhost:4000/posts/2026/05/masem-intro/" class="btn btn--bluesky" title="Share on Bluesky"><i class="fab fa-bluesky" aria-hidden="true"></i><span> Bluesky</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/posts/2026/05/masem-intro/" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/posts/2026/05/masem-intro/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+
+  <a href="https://www.addtoany.com/add_to/mastodon?linkurl=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2026%2F05%2Fmasem-intro%2F" class="btn btn--mastodon" title="Share on Mastodon"><i class="fab fa-mastodon" aria-hidden="true"></i><span> Mastodon</span></a>
+
+  <a href="https://x.com/intent/post?text=http://localhost:4000/posts/2026/05/masem-intro/" class="btn btn--x" title="Share on X"><i class="fab fa-x-twitter" aria-hidden="true"></i><span> X (formerly Twitter)</span></a>
+</section>
+ -->
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/posts/2026/05/hello-world/" class="pagination--pager" title="Hello World
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2026/05/hello-world/" rel="permalink">Hello World
+</a>
+      
+    </h2>
+    
+    
+
+    
+      <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> 
+
+
+  
+	  less than 1 minute read
+	
+</p>
+    
+
+        
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2026-05-25T00:00:00+00:00">May 25, 2026</time></p>
+        
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>This is going to be a very cool blog with relevant posts about robotics and stuff (I hope). Welcome, feel free to look around. If you have suggestions, don’t hesitate to contact me!</p>
+</p>
+    
+    
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- Support for MatJax -->
+<script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+
+<!-- Support for Mermaid -->
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({startOnLoad:true, theme:'default'});
+    await mermaid.run({querySelector:'code.language-mermaid'});
+</script>
+
+<!-- end custom footer snippets -->
+
+        
+<div class="page__footer-copyright">
+  &copy; 2026 Tilman Burghoff, Marchstraße 23, 10587 Berlin, Germany; Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.<br />
+  Site last updated 2026-05-26, <a href="/terms/">Datenschutzerklärung</a>.
+</div>
+
+      </footer>
+    </div>
+
+    <script type="module" src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
+

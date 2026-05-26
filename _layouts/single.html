@@ -47,7 +47,7 @@ layout: default
       <section class="page__content" itemprop="text">
         {% if page.preview_image %}
           <p class="page__meta">
-            <img src="{{ page.preview_image | prepend: base_path }}" alt="A preview image for the paper" />
+            <img src="{{ page.preview_image | prepend: base_path }}" alt="{% if page.preview_image_alt %}{{ page.preview_image_alt | escape }}{% else %}A preview image for the paper{% endif %}" />
           </p>
         {% endif %}
         {{ content }}

@@ -78,7 +78,7 @@
     {% if has_preview %}
         </div>
         <div class="archive__item-preview">
-          <img src="{{ post.preview_image | prepend: base_path }}" alt="" />
+          <img src="{{ post.preview_image | prepend: base_path }}" alt="{% if post.preview_image_alt %}{{ post.preview_image_alt | escape }}{% endif %}" />
         </div>
       </div>
     {% endif %}
