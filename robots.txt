@@ -1,4 +1,4 @@
-Sitemap: {{ site.url }}/sitemap.xml
+Sitemap: https://tilman-burghoff.github.io/sitemap.xml
 
 User-agent: *
 Disallow:
