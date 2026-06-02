@@ -67,7 +67,7 @@
     {% endif %}
     
     {% if post.collection == 'publications' %}
-          <p style="font-size: smaller"><i>{{ post.venue }}</i> </p>
+          <p style="font-size: smaller"><i>{{ post.venue | markdownify | remove: "<p>" | remove: "</p>" }}</i> </p>
     {% endif %}
     {% if post.links %}
       {% capture base_prefix %}]({{ base_path }}/{% endcapture %}

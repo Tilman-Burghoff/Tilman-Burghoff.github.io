@@ -55,7 +55,7 @@ layout: default
         {{ content }}
 
         {% if page.venue%}
-          <p style="font-size: smaller"><i>{{ page.venue }}</i> </p>
+          <p style="font-size: smaller"><i>{{ page.venue | markdownify | remove: "<p>" | remove: "</p>" }}</i> </p>
         {% endif %}
 
         {% if page.links %}

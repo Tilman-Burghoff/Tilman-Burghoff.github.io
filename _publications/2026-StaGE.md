@@ -12,7 +12,7 @@ preview_image: /images/stage-vis-abstract.svg
 preview_image_alt: "The image shows the visual abstract of the paper. It visualizes how StaGE (the method) generates interaction. A large blue sheet shows the manifold of stable configurations, while lines spawing from one point, leaving the manifold, only to end up on it in the end symbolize how StaGE works: The interactions start and end in stability, but are allowed to move through unstable states in between."
 excerpt: 'The method (StaGE) generates diverse long-horizon manipulations by leveraging black-box simulation.'
 date: 2026-03-06
-venue: 'Accepted at ICRA Xplore Workshop 2026 (Oral)'
+venue: 'Accepted at [ICRA Xplore Workshop 2026 (Oral)](https://openreview.net/forum?id=CK20xxwrOH)'
 links: '[arXiv](https://arxiv.org/abs/2603.06773) | [Code](https://github.com/Tupryk/EXPLORE) | [Video](https://www.youtube.com/watch?v=mLnu76iOSlI) | [Bibtex](/files/cobobriesewitz2026stabilityguided.bib)'
 # citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
 ---
