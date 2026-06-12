@@ -1,7 +1,9 @@
 ---
 title: 'Introduction to MASEM (Manifold Sampling via Entropy Maximization)'
 date: 2026-05-26
-permalink: /posts/2026/05/masem-intro/
+permalink: /blog/intro-to-masem/
+redirect_from: 
+  - /posts/2026/05/masem-intro/
 tags:
   - paper
   - MASEM
