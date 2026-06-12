@@ -25,6 +25,7 @@ author:
   # Biographic information
   avatar           : "me.jpg"
   name             : "Tilman Burghoff"
+  links_label      : "Contact" # Label for the mobile links/social button
   pronouns         : # example: "she/her"  
   bio              : "Student Researcher at Learning and Intelligent Systems Lab at TU Berlin. I am working in the intersection of Robotics, ML and Non-Linear Programming."
   location         : "Berlin, Germany"

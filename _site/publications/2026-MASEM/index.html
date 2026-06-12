@@ -23,7 +23,7 @@
 
 
 
-<meta name="description" content="Sampling from disconnected manifolds is hard; we tackle it with an entropy-maximizing resampling strategy.">
+<meta name="description" content="Sampling from disconnected manifolds is hard; we tackle it with an entropy-maximizing resampling strategy called MASEM.">
 
 
 
@@ -73,7 +73,7 @@
   <meta property="og:type" content="article">
 
 
-  <meta property="og:description" name="description" content="Sampling from disconnected manifolds is hard; we tackle it with an entropy-maximizing resampling strategy.">
+  <meta property="og:description" name="description" content="Sampling from disconnected manifolds is hard; we tackle it with an entropy-maximizing resampling strategy called MASEM.">
 
 
   <meta property="og:url" content="http://localhost:4000/publications/2026-MASEM/">
@@ -127,9 +127,6 @@
       <nav id="site-nav" class="greedy-nav">
         <button><span class="navicon"></span></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg persist">
-            <a href="http://localhost:4000/">Tilman Burghoff</a>
-          </li>
           
             
             <li class="masthead__menu-item ">
@@ -187,7 +184,7 @@
   </div>
 
   <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
+    <button class="btn btn--inverse">Contact</button>
     <ul class="author__urls social-icons">
       <!-- Font Awesome icons / Biographic information  -->
       
@@ -267,7 +264,7 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Manifold Sampling via Entropy Maximization">
-    <meta itemprop="description" content="Sampling from disconnected manifolds is hard; we tackle it with an entropy-maximizing resampling strategy.">
+    <meta itemprop="description" content="Sampling from disconnected manifolds is hard; we tackle it with an entropy-maximizing resampling strategy called MASEM.">
     <meta itemprop="datePublished" content="May 12, 2026">
     
     
@@ -295,13 +292,14 @@
         
         <p><a href="/posts/2026/05/masem-intro/">Blog-post introducing the paper</a></p>
 
-<p>Scaling up datasets is highly effective in improving the performance of deep learning models, including in the field of robot learning. However, data collection still proves to be a bottleneck. Approaches relying on collecting human demonstrations are labor-intensive and inherently limited: they tend to be narrow, task-specific, and fail to adequately explore the full space of feasible states. Synthetic data generation could remedy this, but current techniques mostly rely on local trajectory optimization and fail to find diverse solutions. In this work, we propose a novel method capable of finding diverse long-horizon manipulations through black-box simulation. We achieve this by combining an RRT-style search with sampling-based MPC, together with a novel sampling scheme that guides the exploration toward stable configurations. Specifically, we sample from a manifold of stable states while growing a search tree directly through simulation, without restricting the planner to purely stable motions. We demonstrate the method’s ability to discover diverse manipulation strategies, including pushing, grasping, pivoting, throwing, and tool use, across different robot morphologies, without task-specific guidance.</p>
+<p>Sampling from constrained distributions has a wide range of applications, including in Bayesian optimization and robotics. Prior work establishes convergence and feasibility guarantees for constrained sampling, but assumes that the feasible set is connected. However, in practice, the feasible set often decomposes into multiple disconnected components, which makes efficient sampling under constraints challenging. In this paper, we propose MAnifold Sampling via Entropy Maximization (MASEM) for sampling on a manifold with an unknown number of disconnected components, implicitly defined by smooth equality and inequality constraints. The presented method uses a resampling scheme to maximize the entropy of the empirical distribution based on k-nearest neighbor density estimation. We show that, in the mean field, MASEM decreases the KL-divergence between the empirical distribution and the maximum-entropy target exponentially in the number of resampling steps. We instantiate MASEM with multiple local samplers and demonstrate its versatility and efficiency on synthetic and robotics-based benchmarks. MASEM enables fast and scalable mixing across a range of constrained sampling problems, improving over alternatives by an order of magnitude in Sinkhorn distance with competitive runtime.</p>
 
 <p><a href="https://arxiv.org/pdf/2605.12338">Read the full paper here</a></p>
 
 
         
-          <p style="font-size: smaller"><i>Under Review</i> </p>
+          <p style="font-size: smaller"><i>Under Review
+</i> </p>
         
 
         
@@ -385,7 +383,7 @@
         
 <div class="page__footer-copyright">
   &copy; 2026 Tilman Burghoff, Marchstraße 23, 10587 Berlin, Germany; Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.<br />
-  Site last updated 2026-05-26, <a href="/terms/">Datenschutzerklärung</a>.
+  Site last updated 2026-06-12, <a href="/terms/">Datenschutzerklärung</a>.
 </div>
 
       </footer>

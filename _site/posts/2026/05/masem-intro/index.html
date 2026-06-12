@@ -19,11 +19,11 @@
 
 
 
-<title>Introduction to Manifold Sampling via Entropy Maximization - Tilman Burghoff</title>
+<title>Introduction to MASEM (Manifold Sampling via Entropy Maximization) - Tilman Burghoff</title>
 
 
 
-<meta name="description" content="This is meant as an introduction to the paper “Manifold Sampling via Entropy Maximization” by Cornelius V. Braun, me, and Marc Toussaint [1], where we introduce a framework called MASEM. It will be very informal; I recommend reading the paper (perhaps armed with the intuition gained here) for a rigorous treatment.">
+<meta name="description" content="This post is an introduction/explanation to the paper “Manifold Sampling via Entropy Maximization” by Cornelius V. Braun, me, and Marc Toussaint [1], where we introduce a framework called MASEM. I will explain MASEM very informally; I recommend reading the paper (perhaps armed with the intuition gained here) for a rigorous treatment.">
 
 
 
@@ -68,12 +68,12 @@
 <!-- Open Graph protocol data (https://ogp.me/), used by social media -->
 <meta property="og:locale" content="en-US">
 <meta property="og:site_name" content="Tilman Burghoff"> 
-<meta property="og:title" content="Introduction to Manifold Sampling via Entropy Maximization">
+<meta property="og:title" content="Introduction to MASEM (Manifold Sampling via Entropy Maximization)">
 
   <meta property="og:type" content="article">
 
 
-  <meta property="og:description" name="description" content="This is meant as an introduction to the paper “Manifold Sampling via Entropy Maximization” by Cornelius V. Braun, me, and Marc Toussaint [1], where we introduce a framework called MASEM. It will be very informal; I recommend reading the paper (perhaps armed with the intuition gained here) for a rigorous treatment.">
+  <meta property="og:description" name="description" content="This post is an introduction/explanation to the paper “Manifold Sampling via Entropy Maximization” by Cornelius V. Braun, me, and Marc Toussaint [1], where we introduce a framework called MASEM. I will explain MASEM very informally; I recommend reading the paper (perhaps armed with the intuition gained here) for a rigorous treatment.">
 
 
   <meta property="og:url" content="http://localhost:4000/posts/2026/05/masem-intro/">
@@ -127,9 +127,6 @@
       <nav id="site-nav" class="greedy-nav">
         <button><span class="navicon"></span></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg persist">
-            <a href="http://localhost:4000/">Tilman Burghoff</a>
-          </li>
           
             
             <li class="masthead__menu-item ">
@@ -187,7 +184,7 @@
   </div>
 
   <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
+    <button class="btn btn--inverse">Contact</button>
     <ul class="author__urls social-icons">
       <!-- Font Awesome icons / Biographic information  -->
       
@@ -266,8 +263,8 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Introduction to Manifold Sampling via Entropy Maximization">
-    <meta itemprop="description" content="This is meant as an introduction to the paper “Manifold Sampling via Entropy Maximization” by Cornelius V. Braun, me, and Marc Toussaint [1], where we introduce a framework called MASEM. It will be very informal; I recommend reading the paper (perhaps armed with the intuition gained here) for a rigorous treatment.">
+    <meta itemprop="headline" content="Introduction to MASEM (Manifold Sampling via Entropy Maximization)">
+    <meta itemprop="description" content="This post is an introduction/explanation to the paper “Manifold Sampling via Entropy Maximization” by Cornelius V. Braun, me, and Marc Toussaint [1], where we introduce a framework called MASEM. I will explain MASEM very informally; I recommend reading the paper (perhaps armed with the intuition gained here) for a rigorous treatment.">
     <meta itemprop="datePublished" content="May 26, 2026">
     
     
@@ -275,7 +272,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">Introduction to Manifold Sampling via Entropy Maximization
+          <h1 class="page__title" itemprop="headline">Introduction to MASEM (Manifold Sampling via Entropy Maximization)
 </h1>
           
           
@@ -297,7 +294,7 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>This is meant as an introduction to the paper “Manifold Sampling via Entropy Maximization” by Cornelius V. Braun, me, and Marc Toussaint [1], where we introduce a framework called MASEM. It will be very informal; I recommend <a href="https://arxiv.org/pdf/2605.12338">reading the paper</a> (perhaps armed with the intuition gained here) for a rigorous treatment.</p>
+        <p>This post is an introduction/explanation to the paper “Manifold Sampling via Entropy Maximization” by Cornelius V. Braun, me, and Marc Toussaint [1], where we introduce a framework called MASEM. I will explain MASEM very informally; I recommend <a href="https://arxiv.org/pdf/2605.12338">reading the paper</a> (perhaps armed with the intuition gained here) for a rigorous treatment.</p>
 
 <h2 id="sampling-under-constraints">Sampling under Constraints</h2>
 
@@ -311,13 +308,13 @@
 
 <p><img src="/images/masem-2d_rows.svg" alt="This image shows three plots. Each plot displays the samples generated by a method. The first one shows the samples of NHR, the second one of MASEM-NHR (our method) and the third one the ground truth. The samples are on two disk. In the NHR plot, it is clearly visible that a large part of the samples are in the smaller disk, way more then in the ground truth distribution. MASEM-NHR and the ground truth look very similar." /></p>
 
-<p>This is where MASEM, our method, comes in. We combine a local sampler as described above with a resampling step. The local sampler mixes points within components, while the resampling step takes care of global allocation. It takes points from crowded components and moves them towards those with little samples. In essence, MASEM helps the particles spread out fairly across all components of the constraint set.</p>
+<p>This is where our method MASEM comes in. We combine a local sampler as described above with a resampling step. The local sampler mixes points within components, while the resampling step takes care of global allocation. It takes points from crowded components and moves them towards those with little samples. In essence, MASEM helps the particles spread out fairly across all components of the constraint set.</p>
 
 <p>Interestingly, we only need local information to do that. Each point estimates its distance to its closest neighbors. If this distance is small, it means the neighborhood of this point is crowded and it likely belongs to an oversampled component. Conversely, if the distance is large, the point likely lies in an undersampled component. By treating these points with large neighbor distances as more important, we balance points between different components.</p>
 
 <p>In our experiments we see that this method works well, especially if our manifold has disconnected components. It only introduces a small runtime overhead and greatly improves the quality of our samples. We also test it on robotics-related problems, where we see that it helps with finding more diverse paths around obstacles. The graphic shows the paths found by two constrained samplers (OLLA [3] and NHR [2]), first as-is without MASEM, and then after we modify them with the MASEM-resampling step.</p>
 
-<p><img src="/images/masem-motion_planning_rand_2d_samples.svg" alt="Graphic showing constrained samplers without and with MASEM. We see blue paths crossing from left to right, while avoiding circular obstacles with different radii. First we see NHR without MASEM, and then with MASEM added. The difference is not gigantic, but it is clear that MASEM-NHR finds more paths, especially some more complicated ones (which go trough narrower gaps between obstacles). After that we see OLLA. Here, the difference between not using and using MASEM is striking. OLLA basically finds only paths going trough the center and ignores the outer paths. MASEM-OLLA keeps these paths trough the center, but is able to cover the whole space." /></p>
+<p><img src="/images/masem-motion_planning_rand_2d_samples.svg" alt="Graphic showing constrained samplers without and with MASEM. We see blue paths crossing from left to right, while avoiding circular obstacles with different radii. First we see NHR without MASEM, and then with MASEM added. The difference is not gigantic, but it is clear that MASEM-NHR finds more paths, especially some more complicated ones (which go through narrower gaps between obstacles). After that we see OLLA. Here, the difference between not using and using MASEM is striking. OLLA basically finds only paths going trough the center and ignores the outer paths. MASEM-OLLA keeps these paths trough the center, but is able to cover the whole space." /></p>
 
 <h2 id="to-be-slightly-more-rigorous">To be slightly more rigorous</h2>
 <p>A feasible set defined by constraints is not automatically a manifold. You need additional conditions, for example LICQ and smooth constraints. The resulting manifold is often called Riemannian manifold with corners, as it is locally diffeomorph to a euclidean half-space.
@@ -328,7 +325,7 @@ The constrained sampler I describe resembles Non-linear Hit and Run [2]. While i
 
 <p>[2] M. Toussaint, C. V. Braun, and J. Ortiz-Haro, “NLP Sampling: Combining MCMC and NLP Methods for Diverse Constrained Sampling,” arXiv preprint <a href="https://arxiv.org/abs/2407.03035">arXiv:2407.03035</a>, 2024.</p>
 
-<p>[3] K. Jeon, M. Muehlebach, and M. Tao, “Fast Non-Log-Concave Sampling under Nonconvex Equality and Inequality Constraints with Landing,” in The thirty-ninth annual conference on neural information processing systems, 2026. <a href="https://openreview.net/forum?id=e46NRNunFp">Online</a></p>
+<p>[3] K. Jeon, M. Muehlebach, and M. Tao, “Fast Non-Log-Concave Sampling under Nonconvex Equality and Inequality Constraints with Landing,” in the thirty-ninth annual conference on neural information processing systems (Neurips), 2025. <a href="https://openreview.net/forum?id=e46NRNunFp">Online</a></p>
 
 
         
@@ -495,7 +492,7 @@ The constrained sampler I describe resembles Non-linear Hit and Run [2]. While i
         
 <div class="page__footer-copyright">
   &copy; 2026 Tilman Burghoff, Marchstraße 23, 10587 Berlin, Germany; Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.<br />
-  Site last updated 2026-05-26, <a href="/terms/">Datenschutzerklärung</a>.
+  Site last updated 2026-06-12, <a href="/terms/">Datenschutzerklärung</a>.
 </div>
 
       </footer>
