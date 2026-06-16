@@ -11,6 +11,7 @@ preview_image_alt: "A preview image for the paper. It shows paths that avoid obs
 excerpt: 'Sampling from disconnected manifolds is hard; we tackle it with an entropy-maximizing resampling strategy called MASEM.'
 date: 2026-05-12
 venue: 'Under Review'
+eqcontrib: yes
 links: '[arXiv](https://arxiv.org/abs/2605.12338) | [Blog](/blog/intro-to-masem/) | [Bibtex](/files/braun2026manifold.bib)'
 # citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
 ---

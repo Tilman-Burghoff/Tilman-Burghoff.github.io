@@ -33,3 +33,4 @@ Simplizialkomplexen" under the supervision of Prof. Dr. Michael Joswig. It was r
   {% endif %}
 </div>
 {% endfor %}
+<small>* Equal Contribution </small>
