@@ -49,7 +49,7 @@ layout: default
       <section class="page__content" itemprop="text">
         {% if page.preview_image %}
           <p class="page__meta">
-            <img src="{{ page.preview_image | prepend: base_path }}" alt="{% if page.preview_image_alt %}{{ page.preview_image_alt | escape }}{% else %}A preview image for the paper{% endif %}" />
+            <img src="{{ page.preview_image | prepend: base_path }}" alt="{% if page.preview_image_alt %}{{ page.preview_image_alt | escape }}{% else %}A preview image for the paper{% endif %}" style="max-height: 25vh; width: auto; object-fit: contain;" />
           </p>
         {% endif %}
         {{ content }}
