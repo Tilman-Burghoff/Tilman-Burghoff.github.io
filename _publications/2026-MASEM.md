@@ -12,10 +12,10 @@ excerpt: 'Sampling from disconnected manifolds is hard; we tackle it with an ent
 date: 2026-05-12
 venue: 'NeurIPS 2026'
 eqcontrib: yes
-links: '[arXiv](https://arxiv.org/abs/2605.12338) | [Blog](/blog/intro-to-masem/) | [Bibtex](/files/braun2026manifold.bib)'
+links: '[Website](https://lis-tu-berlin.github.io/masem/) | [arXiv](https://arxiv.org/abs/2605.12338) | [Code](https://github.com/LIS-TU-Berlin/masem) | [OpenReview](https://openreview.net/forum?id=mAVz31YJlN) | [Blog](/blog/intro-to-masem/) | [Bibtex](/files/braun2026manifold.bib)'
 # citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
 ---
-[Blog-post introducing the paper](/posts/2026/05/masem-intro/)
+[Project Page](https://lis-tu-berlin.github.io/masem/) [Blog-post with a gentle introduction](/posts/2026/05/masem-intro/)
 
 Sampling from constrained distributions has a wide range of applications, including in Bayesian optimization and robotics. Prior work establishes convergence and feasibility guarantees for constrained sampling, but assumes that the feasible set is connected. However, in practice, the feasible set often decomposes into multiple disconnected components, which makes efficient sampling under constraints challenging. In this paper, we propose MAnifold Sampling via Entropy Maximization (MASEM) for sampling on a manifold with an unknown number of disconnected components, implicitly defined by smooth equality and inequality constraints. The presented method uses a resampling scheme to maximize the entropy of the empirical distribution based on k-nearest neighbor density estimation. We show that, in the mean field, MASEM decreases the KL-divergence between the empirical distribution and the maximum-entropy target exponentially in the number of resampling steps. We instantiate MASEM with multiple local samplers and demonstrate its versatility and efficiency on synthetic and robotics-based benchmarks. MASEM enables fast and scalable mixing across a range of constrained sampling problems, improving over alternatives by an order of magnitude in Sinkhorn distance with competitive runtime. 
 
