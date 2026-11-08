@@ -8,7 +8,9 @@ tags:
   - paper
   - MASEM
 ---
-This post is an introduction/explanation to the paper “Manifold Sampling via Entropy Maximization” by Cornelius V. Braun and myself as equal contributors under the supervision of Marc Toussaint \[1\], where we introduce a framework called MASEM. I will explain MASEM very informally; I recommend [reading the paper](https://arxiv.org/pdf/2605.12338) (perhaps armed with the intuition gained here) for a rigorous treatment.
+
+In this post I will introduce our paper “Manifold Sampling via Entropy Maximization” by Cornelius V. Braun and me as equal contributors, and Marc Toussaint \[1\], where we introduce a framework called MASEM. I will explain MASEM very informally; you can find a more rigorous treatment on our [project page](https://lis-tu-berlin.github.io/masem) (with cool animations), or in the [paper](https://arxiv.org/pdf/2605.12338).
+
 
 ## Sampling under Constraints
 
@@ -33,14 +35,19 @@ In our experiments we see that this method works well, especially if our manifol
 
 ![Graphic showing constrained samplers without and with MASEM. We see blue paths crossing from left to right, while avoiding circular obstacles with different radii. First we see NHR without MASEM, and then with MASEM added. The difference is not gigantic, but it is clear that MASEM-NHR finds more paths, especially some more complicated ones (which go through narrower gaps between obstacles). After that we see OLLA. Here, the difference between not using and using MASEM is striking. OLLA basically finds only paths going trough the center and ignores the outer paths. MASEM-OLLA keeps these paths trough the center, but is able to cover the whole space.](/images/masem-motion_planning_rand_2d_samples.svg)
 
+## Where to go next
+Now that you gained some intuition about MASEM, you can [check out the project page](https://lis-tu-berlin.github.io/masem) to learn more, [play around with the code](https://github.com/lis-tu-berlin/masem), or [read the paper](https://arxiv.org/pdf/2605.12338). If there are any open questions, please feel free to reach out!
+
+All that left to do is to wrap up this blogpost by connecting its informal descriptions to the underlying theory, which we'll do in the next section.
+
 ## To be slightly more rigorous
 A feasible set defined by constraints is not automatically a manifold. You need additional conditions, for example LICQ and smooth constraints. The resulting manifold is often called Riemannian manifold with corners, as it is locally diffeomorph to a euclidean half-space.
 The constrained sampler I describe resembles Non-linear Hit and Run \[2\]. While it can somewhat mix across disconnected components (given a large enough step size and enough time), it struggles if they are far apart or have high curvature. Resampling is done with weights proportional to the k-nearest neighbour distance with some temperature tau which should lie between 0 and the intrinsic dimension of the manifold.
 
 
 ## Sources
-\[1\] C. V. Braun, T. Burghoff and M. Toussaint, “Manifold Sampling via Entropy Maximization,” arXiv preprint [arXiv:2605.12338](https://arxiv.org/abs/2605.12338), 2026.
+\[1\] C. V. Braun, T. Burghoff and M. Toussaint, “Manifold Sampling via Entropy Maximization,” in the fortieth annual conference on neural information processing systems (NeurIPS), 2026. [online](https://openreview.net/forum?id=mAVz31YJlN)
 
 \[2\] M. Toussaint, C. V. Braun, and J. Ortiz-Haro, “NLP Sampling: Combining MCMC and NLP Methods for Diverse Constrained Sampling,” arXiv preprint [arXiv:2407.03035](https://arxiv.org/abs/2407.03035), 2024.
 
-\[3\] K. Jeon, M. Muehlebach, and M. Tao, “Fast Non-Log-Concave Sampling under Nonconvex Equality and Inequality Constraints with Landing,” in the thirty-ninth annual conference on neural information processing systems (Neurips), 2025. [Online](https://openreview.net/forum?id=e46NRNunFp)
+\[3\] K. Jeon, M. Muehlebach, and M. Tao, “Fast Non-Log-Concave Sampling under Nonconvex Equality and Inequality Constraints with Landing,” in the thirty-ninth annual conference on neural information processing systems (NeurIPS), 2025. [Online](https://openreview.net/forum?id=e46NRNunFp)
